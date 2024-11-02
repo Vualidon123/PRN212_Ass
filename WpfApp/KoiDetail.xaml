@@ -1,0 +1,87 @@
+﻿<Window x:Class="WpfApp.KoiDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="KoiDetail" Height="600" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="10">
+            <StackPanel>
+                <TextBlock Text="Koi Fish Details" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" />
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Koi Fish ID:" Width="100"/>
+                    <TextBox Text="{Binding KoiFishId}" IsReadOnly="True" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Name:" Width="100"/>
+                    <TextBox Text="{Binding Name}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Breeder:" Width="100"/>
+                    <TextBox Text="{Binding Breeder}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Age:" Width="100"/>
+                    <TextBox Text="{Binding Age}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Length:" Width="100"/>
+                    <TextBox Text="{Binding Length}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Weight:" Width="100"/>
+                    <TextBox Text="{Binding Weight}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Price:" Width="100"/>
+                    <TextBox Text="{Binding Price}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Variety:" Width="100"/>
+                    <TextBox Text="{Binding Variety}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Origin:" Width="100"/>
+                    <TextBox Text="{Binding Origin}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Physique:" Width="100"/>
+                    <TextBox Text="{Binding Physique}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Sex:" Width="100"/>
+                    <TextBox Text="{Binding Sex}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Pond ID:" Width="100"/>
+                    <TextBox Text="{Binding PondId}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="User ID:" Width="100"/>
+                    <TextBox Text="{Binding UserId}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="In Pond Since:" Width="100"/>
+                    <TextBox Text="{Binding InPondSince}" Width="200"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Image Display Section -->
+        <Grid Grid.Column="1" Margin="10">
+            <StackPanel>
+                <TextBlock Text="Koi Fish Image" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                <Border BorderBrush="Gray" BorderThickness="1" Margin="5">
+                    <Image x:Name="KoiImage" Height="300" Width="300" Stretch="Uniform"/>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
