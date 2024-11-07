@@ -11,6 +11,10 @@ namespace Service
     public class PondService : IPondService
     {
         private readonly IPondRepo pondRepo;
+        public PondService()
+        {
+            pondRepo = new PondRepo();
+        }
         public void CreatePond(Pond pond)
         => pondRepo.CreatePond(pond);
 

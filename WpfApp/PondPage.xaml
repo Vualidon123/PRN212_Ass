@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="1080"
       Title="PondPage">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -28,44 +28,28 @@
                 <TextBox Name="VolumeTextBox" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="3">
-                <Label Content="Length (m):" Width="90"/>
-                <TextBox Name="LengthTextBox" Width="120"/>
+                <Label Content="Skimmers:" Width="90"/>
+                <TextBox Name="SkimmersTextBox" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="3">
-                <Label Content="Width (m):" Width="90"/>
-                <TextBox Name="WidthTextBox" Width="120"/>
+                <Label Content="Pumping Capacity:" Width="90"/>
+                <TextBox Name="PCTextBox" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="3">
                 <Label Content="Depth (m):" Width="90"/>
                 <TextBox Name="DepthTextBox" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="3">
-                <Label Content="Shape:" Width="90"/>
-                <TextBox Name="ShapeTextBox" Width="120"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="3">
                 <Label Content="Location:" Width="90"/>
                 <TextBox Name="LocationTextBox" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="3">
-                <Label Content="Water Type:" Width="90"/>
-                <TextBox Name="WaterTypeTextBox" Width="120"/>
+                <Label Content="Water Source:" Width="90"/>
+                <TextBox Name="WaterSourceTextBox" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="3">
-                <Label Content="Filter System:" Width="90"/>
-                <TextBox Name="FilterSystemTextBox" Width="120"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="3">
-                <Label Content="Built Date:" Width="90"/>
-                <DatePicker Name="BuiltDatePicker" Width="120"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="3">
-                <Label Content="Last Cleaned:" Width="90"/>
-                <DatePicker Name="LastCleanedDatePicker" Width="120"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="3">
-                <Label Content="Owner ID:" Width="90"/>
-                <TextBox Name="OwnerIdTextBox" Width="120"/>
+                <Label Content="Drain:" Width="90"/>
+                <TextBox Name="DrainTextBox" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="3">
                 <Label Content="Image Path:" Width="90"/>
@@ -73,30 +57,36 @@
                 <Button Content="Browse" Click="BrowseImage_Click" Width="40" Margin="3,0,0,0"/>
             </StackPanel>
 
-            <!-- Buttons for actions -->
-            <StackPanel Orientation="Horizontal" Margin="3">
-                <Button Content="Create" Click="CreateButton_Click" Width="80" Margin="3"/>
-                <Button Content="Update" Click="UpdateButton_Click" Width="80" Margin="3"/>
-                <Button Content="Delete" Click="DeleteButton_Click" Width="80" Margin="3"/>
+            <StackPanel Orientation="Horizontal" Margin="10" Width="Auto">
+                <Button Content="Create" Click="CreateButton_Click" Width="80" Margin="2"/>
+                <Button Content="Delete" Click="DeleteButton_Click" Width="80" Margin="2"/>
             </StackPanel>
         </StackPanel>
 
-        <!-- Right column for DataGrid -->
-        <DataGrid Name="PondDataGrid" AutoGenerateColumns="False" Grid.Column="1" Margin="5" SelectionChanged="dg_selection">
+        <DataGrid Name="PondDataGrid" AutoGenerateColumns="False" Margin="286,5,5,5" SelectionChanged="dg_selection" Grid.ColumnSpan="2" Width="Auto" CanUserAddRows="false"
+>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding PondId}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Volume (L)" Binding="{Binding Volume}"/>
-                <DataGridTextColumn Header="Length (m)" Binding="{Binding Length}"/>
-                <DataGridTextColumn Header="Width (m)" Binding="{Binding Width}"/>
                 <DataGridTextColumn Header="Depth (m)" Binding="{Binding Depth}"/>
-                <DataGridTextColumn Header="Shape" Binding="{Binding Shape}"/>
+                <DataGridTextColumn Header="Drain (m)" Binding="{Binding Drain}"/>
                 <DataGridTextColumn Header="Location" Binding="{Binding Location}"/>
-                <DataGridTextColumn Header="Water Type" Binding="{Binding WaterType}"/>
-                <DataGridTextColumn Header="Filter System" Binding="{Binding FilterSystem}"/>
-                <DataGridTextColumn Header="Built Date" Binding="{Binding BuiltDate}"/>
-                <DataGridTextColumn Header="Last Cleaned" Binding="{Binding LastCleaned}"/>
-                <DataGridTextColumn Header="Owner ID" Binding="{Binding OwnerId}"/>
+                <DataGridTextColumn Header="Skimmers" Binding="{Binding Skimmers}"/>
+                <DataGridTextColumn Header="WaterSource" Binding="{Binding WaterSource}"/>
+                <DataGridTextColumn Header="Pumping Capacity" Binding="{Binding PumpingCapacity}"/>
+                <DataGridTemplateColumn Header="Actions" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="View Details" 
+                            Click="ViewDetails_Click"
+                            Tag="{Binding PondId}"
+                            Width="80" 
+                            Height="25" 
+                            Margin="2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

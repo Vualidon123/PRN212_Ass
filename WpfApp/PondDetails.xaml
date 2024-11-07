@@ -1,0 +1,81 @@
+﻿<Page x:Class="WpfApp.PondDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="PondDetails">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="10">
+            <StackPanel>
+                <TextBlock Text="Pond Details" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" />
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Pond ID:" Width="120"/>
+                    <TextBox x:Name="PondIdTextBox" Text="{Binding PondId}" IsReadOnly="True" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Name:" Width="120"/>
+                    <TextBox x:Name="NameTextBox" Text="{Binding Name}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Volume (L):" Width="120"/>
+                    <TextBox x:Name="VolumeTextBox" Text="{Binding Volume}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Depth (m):" Width="120"/>
+                    <TextBox x:Name="DepthTextBox" Text="{Binding Depth}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Location:" Width="120"/>
+                    <TextBox x:Name="LocationTextBox" Text="{Binding Location}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Skimmers:" Width="120"/>
+                    <TextBox x:Name="SkimmersTextBox" Text="{Binding Skimmers}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Water Source:" Width="120"/>
+                    <TextBox x:Name="WaterSourceTextBox" Text="{Binding WaterSource}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Drain:" Width="120"/>
+                    <TextBox x:Name="DrainTextBox" Text="{Binding Drain}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label Content="Pumping Capacity:" Width="120"/>
+                    <TextBox x:Name="PCTextBox" Text="{Binding PumpingCapacity}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="20,20,3,3" HorizontalAlignment="Center">
+                    <Button Content="Update" Click="UpdateButton_Click" Width="100" Height="30" Margin="0,0,10,0"/>
+                    <Button Content="Back" Click="BackButton_Click" Width="100" Height="30"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="10">
+            <StackPanel>
+                <TextBlock Text="Pond Image" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                <Border BorderBrush="Gray" BorderThickness="1" Margin="5">
+                    <Image x:Name="PondImage" Height="300" Width="300" Stretch="Uniform"/>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
