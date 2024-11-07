@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Controls;
 using BO;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using System.IO;
+using System.Windows;
+using System.Windows.Navigation;
 
 namespace WpfApp
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Page
     {
         private readonly IKoiRepository koiRepository;
         private readonly TestyContext context;
@@ -101,8 +102,20 @@ namespace WpfApp
                         koiFish.PondId = string.IsNullOrWhiteSpace(PondIdTextBox.Text) ? null : int.Parse(PondIdTextBox.Text);
                         koiFish.UserId = string.IsNullOrWhiteSpace(UserIdTextBox.Text) ? null : int.Parse(UserIdTextBox.Text);
                         koiFish.InPondSince = DateOnly.TryParse(InPondSinceTextBox.Text, out var date) ? date : null;
+                        
+                        // Handle image update
+                        if (!string.IsNullOrEmpty(ImagePathTextBox.Text))
+                        {
+                            byte[]? newImage = ConvertImageToByteArray(ImagePathTextBox.Text);
+                            if (newImage != null)
+                            {
+                                koiFish.Image = newImage;
+                            }
+                        }
+
                         koiRepository.UpdateKoi(koiFish);
                         LoadKoi();
+                        MessageBox.Show("KoiFish updated successfully!");
                     }
                     catch (Exception ex)
                     {
@@ -159,8 +172,7 @@ namespace WpfApp
                 UserIdTextBox.Text = selectedKoiFish.UserId?.ToString();
                 InPondSinceTextBox.Text = selectedKoiFish.InPondSince?.ToString("yyyy-MM-dd");
                 ImagePathTextBox.Text = selectedKoiFish.Image?.ToString();
-                KoiDetail detailWindow = new KoiDetail(selectedKoiFish);
-                detailWindow.Show();  // Show the new detail window
+                NavigationService?.Navigate(new KoiDetail(selectedKoiFish));
             }
             else
             {

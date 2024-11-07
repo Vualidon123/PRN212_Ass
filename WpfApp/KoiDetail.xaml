@@ -6,82 +6,118 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="KoiDetail" Height="600" Width="1000">
+    
+    <Window.Resources>
+        <!-- Style for TextBoxes -->
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="CaretBrush" Value="White"/>
+        </Style>
+        
+        <!-- Style for Labels -->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+        <!-- Style for TextBlock -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1.5*"/>
-        </Grid.ColumnDefinitions>
+        <Image Source="C:\Users\PC MSI\Desktop\SWP391\PRN212_Ass\Koi.jpg" Stretch="Fill"/>
+        
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Margin="10">
-            <StackPanel>
-                <TextBlock Text="Koi Fish Details" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" />
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Koi Fish ID:" Width="100"/>
-                    <TextBox Text="{Binding KoiFishId}" IsReadOnly="True" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Name:" Width="100"/>
-                    <TextBox Text="{Binding Name}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Breeder:" Width="100"/>
-                    <TextBox Text="{Binding Breeder}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Age:" Width="100"/>
-                    <TextBox Text="{Binding Age}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Length:" Width="100"/>
-                    <TextBox Text="{Binding Length}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Weight:" Width="100"/>
-                    <TextBox Text="{Binding Weight}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Price:" Width="100"/>
-                    <TextBox Text="{Binding Price}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Variety:" Width="100"/>
-                    <TextBox Text="{Binding Variety}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Origin:" Width="100"/>
-                    <TextBox Text="{Binding Origin}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Physique:" Width="100"/>
-                    <TextBox Text="{Binding Physique}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Sex:" Width="100"/>
-                    <TextBox Text="{Binding Sex}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="Pond ID:" Width="100"/>
-                    <TextBox Text="{Binding PondId}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="User ID:" Width="100"/>
-                    <TextBox Text="{Binding UserId}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="3">
-                    <Label Content="In Pond Since:" Width="100"/>
-                    <TextBox Text="{Binding InPondSince}" Width="200"/>
-                </StackPanel>
-            </StackPanel>
-        </Grid>
-
-        <!-- Image Display Section -->
-        <Grid Grid.Column="1" Margin="10">
-            <StackPanel>
-                <TextBlock Text="Koi Fish Image" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-                <Border BorderBrush="Gray" BorderThickness="1" Margin="5">
-                    <Image x:Name="KoiImage" Height="300" Width="300" Stretch="Uniform"/>
+            <Grid Grid.Column="0" Margin="10">
+                <Border Background="Transparent" CornerRadius="8">
+                    <StackPanel Grid.Column="0" Margin="5,5,34,5">
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Koi Fish ID:" Width="90"/>
+                            <TextBox Name="KoiFishIdTextBox" Width="120" IsReadOnly="True"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Name:" Width="90"/>
+                            <TextBox Name="NameTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Breeder:" Width="90"/>
+                            <TextBox Name="BreederTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Age:" Width="90"/>
+                            <TextBox Name="AgeTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Length:" Width="90"/>
+                            <TextBox Name="LengthTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Weight:" Width="90"/>
+                            <TextBox Name="WeightTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Price:" Width="90"/>
+                            <TextBox Name="PriceTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Variety:" Width="90"/>
+                            <TextBox Name="VarietyTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Origin:" Width="90"/>
+                            <TextBox Name="OriginTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Physique:" Width="90"/>
+                            <TextBox Name="PhysiqueTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Sex:" Width="90"/>
+                            <TextBox Name="SexTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Pond ID:" Width="90"/>
+                            <TextBox Name="PondIdTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="User ID:" Width="90"/>
+                            <TextBox Name="UserIdTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="In Pond Since:" Width="90"/>
+                            <DatePicker Name="InPondSinceTextBox" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Content="Image Path:" Width="90"/>
+                            <TextBox Name="ImagePathTextBox" Width="80" />
+                            <Button Content="Browse" Click="BrowseImage_Click" Width="45" Margin="3,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Button Content="Update" Click="UpdateButton_Click" Width="220"/>
+                        </StackPanel>
+                    </StackPanel>
                 </Border>
-            </StackPanel>
+            </Grid>
+
+            <!-- Image Display Section -->
+            <Grid Grid.Column="1" Margin="10">
+                <Border Background="Transparent" CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock Text="Koi Fish Image" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Border BorderBrush="White" BorderThickness="1" Margin="5" Background="Transparent">
+                            <Image x:Name="KoiImage" Height="300" Width="300" Stretch="Uniform"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
