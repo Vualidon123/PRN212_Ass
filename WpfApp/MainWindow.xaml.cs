@@ -6,18 +6,19 @@ using Repository;
 using System.IO;
 using System.Windows;
 using System.Windows.Navigation;
+using Service;
 
 namespace WpfApp
 {
     public partial class MainWindow : Page
     {
-        private readonly IKoiRepository koiRepository;
+        private readonly IKoiService koiService;
         private readonly TestyContext context;
 
         public MainWindow()
         {
             InitializeComponent();
-            koiRepository = new KoiRepository();
+            koiService = new KoiService();
             context = new TestyContext();
             LoadKoi();
         }
@@ -25,7 +26,7 @@ namespace WpfApp
         // Load data into DataGrid
         public void LoadKoi()
         {
-            var koiList = koiRepository.GetKois();
+            var koiList = koiService.GetKois();
             KoiFishDataGrid.ItemsSource = koiList;
         }
 
@@ -69,7 +70,7 @@ namespace WpfApp
                     Image = ConvertImageToByteArray(ImagePathTextBox.Text)
                 };
 
-                koiRepository.CreateKoi(koi);
+                koiService.CreateKoi(koi);
                 LoadKoi();
                 ClearTextFields();
             }
@@ -113,7 +114,7 @@ namespace WpfApp
                             }
                         }
 
-                        koiRepository.UpdateKoi(koiFish);
+                        koiService.UpdateKoi(koiFish);
                         LoadKoi();
                         MessageBox.Show("KoiFish updated successfully!");
                     }
@@ -134,10 +135,10 @@ namespace WpfApp
         {
             if (int.TryParse(KoiFishIdTextBox.Text, out int id))
             {
-                var koiFish = koiRepository.GetKoi(id);
+                var koiFish = koiService.GetKoi(id);
                 if (koiFish != null)
                 {
-                    koiRepository.DeleteKoi(koiFish);
+                    koiService.DeleteKoi(koiFish);
                     LoadKoi();
                     ClearTextFields();
                 }

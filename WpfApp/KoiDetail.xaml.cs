@@ -20,7 +20,7 @@ namespace WpfApp
     /// <summary>
     /// Interaction logic for KoiDetail.xaml
     /// </summary>
-    public partial class KoiDetail : Window
+    public partial class KoiDetail : Page
     {
         private readonly IKoiRepository koiRepository;
         private readonly TestyContext context;

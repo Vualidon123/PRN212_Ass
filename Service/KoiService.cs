@@ -6,6 +6,11 @@ namespace Service
     public class KoiService : IKoiService
     {
         private readonly IKoiRepository _repository;
+
+        public KoiService()
+        {
+            _repository = new KoiRepository();
+        }
         public void CreateKoi(KoiFish koi)
         {
             _repository.CreateKoi(koi);

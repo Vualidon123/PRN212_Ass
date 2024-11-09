@@ -6,19 +6,10 @@ namespace DataAccessLayer
     {
         public static List<KoiFish> GetKois()
         {
-            var koiList = new List<KoiFish>();
-            try
-            {
-                using var context = new TestyContext();
-                koiList = context.KoiFishes
-                                    
-                                  .ToList();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-            return koiList;
+           
+          using var context = new TestyContext();
+          return context.KoiFishes.ToList();        
+           
         }
     
     public static void CreatKoi(KoiFish koi)
