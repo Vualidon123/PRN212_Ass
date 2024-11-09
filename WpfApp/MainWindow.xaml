@@ -30,7 +30,7 @@
 
     <Grid>
         <!-- Background Image -->
-        <Image Source="C:\Users\PC MSI\Desktop\SWP391\PRN212_Ass\Koi.jpg" Stretch="Fill"/>
+        <Image Source="/Koi.jpg" Stretch="Fill"/>
 
         <!-- Content Grid -->
         <Grid Margin="10">
