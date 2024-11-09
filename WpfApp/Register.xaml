@@ -3,13 +3,77 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="Register" Height="450" Width="800">
+        Title="Register" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <TextBox Name="EmailTextBox" VerticalAlignment="Top" Margin="20"/>
-        <TextBox Name="NameTextBox" VerticalAlignment="Center" Margin="20" />
-        <PasswordBox Name="PasswordBox" VerticalAlignment="Bottom" Margin="20" />
-        <Button x:Name="RegisterButton" Content="Register" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Click="Button_Click"/>
+        <!-- Background Image -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/Koi.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <!-- Registration Form Container -->
+        <Border Background="#AAFFFFFF" CornerRadius="10" Padding="30" Width="400" VerticalAlignment="Center" HorizontalAlignment="Center" Height="338">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="251">
+
+                <!-- Title Text -->
+                <TextBlock Text="Register" FontSize="28" FontWeight="Bold" Foreground="#333" HorizontalAlignment="Center" RenderTransformOrigin="0.539,-0.766"/>
+
+                <!-- Email Input -->
+                <TextBox Name="EmailTextBox" Width="300" Height="40"
+                         Background="#FFF" Foreground="#333" FontSize="16" Padding="10">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="#FFF" BorderThickness="1">
+                                <Grid>
+                                    <TextBlock Text="Email" FontSize="16" VerticalAlignment="Center" Foreground="Gray" Margin="10,0,0,0"
+                                    />
+                                    <ScrollViewer Margin="10,0,0,0" x:Name="PART_ContentHost"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+
+                <!-- Name Input -->
+                <TextBox Name="NameTextBox"  Width="300" Height="40"
+                         Background="#FFF" Foreground="#333" FontSize="16" Padding="10">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="#FFF" BorderThickness="1">
+                                <Grid>
+                                    <TextBlock Text="UserName" FontSize="16" VerticalAlignment="Center" Foreground="Gray" Margin="10,0,0,0"
+                                    />
+                                    <ScrollViewer Margin="10,0,0,0" x:Name="PART_ContentHost"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+
+                <!-- Password Input -->
+                <PasswordBox Name="PasswordBox" Width="300" Height="40"
+                             Background="#FFF" Foreground="#333" FontSize="16" Padding="10">
+                    <PasswordBox.Template>
+                        <ControlTemplate TargetType="PasswordBox">
+                            <Border Background="#FFF" BorderThickness="1">
+                                <Grid>
+                                    <TextBlock Text="Password" FontSize="16" VerticalAlignment="Center" Foreground="Gray" Margin="10,0,0,0"
+                                             />
+                                    <ScrollViewer Margin="10,0,0,0" x:Name="PART_ContentHost"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </PasswordBox.Template>
+                </PasswordBox>
+
+            </StackPanel>
+        </Border>
+        <Button x:Name="RegisterButton" Content="Register" Height="40"
+                Background="#4CAF50" Foreground="White" FontSize="16" FontWeight="Bold"
+                Click="RegisterButton_Click" Margin="294,269,294,125" />
+
+        <Button x:Name="BackButton" Content="Back To Login" Height="40"
+                Background="#4CAF50" Foreground="White" FontSize="16" FontWeight="Bold"
+                Click="RegisterButton_Click" Margin="294,314,294,80" />
     </Grid>
 </Window>

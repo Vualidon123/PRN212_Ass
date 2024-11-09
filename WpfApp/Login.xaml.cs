@@ -18,13 +18,19 @@ namespace WpfApp
         {
             var email = EmailTextBox.Text;
             var password = PasswordBox.Password;
-
+            
             var user = _userService.Login(email, password);
             if (user != null)
             {
-                MessageBox.Show("Login successful!");
-                Menu menu = new Menu();
-                menu.Show();
+                if (user.RoleId == 1)
+                {
+                    Menu menu = new Menu();
+                    menu.Show();
+                }
+                else if (user.RoleId == 2)
+                {
+                    
+                }
                 this.Close();
             }
             else

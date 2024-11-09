@@ -14,7 +14,7 @@ namespace WpfApp
             _userService = new UserService();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             var email = EmailTextBox.Text;
             var name = NameTextBox.Text;
@@ -41,6 +41,13 @@ namespace WpfApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void NameTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Close();
         }
     }
 }
