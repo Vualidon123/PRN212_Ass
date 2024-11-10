@@ -21,5 +21,9 @@ public partial class GrowthRecord
 
     public int KoiFishKoiFishId { get; set; }
 
+    public int? PondId { get; set; }
+
     public virtual KoiFish KoiFishKoiFish { get; set; } = null!;
+
+    public virtual Pond? Pond { get; set; }
 }

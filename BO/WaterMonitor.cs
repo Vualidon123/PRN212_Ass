@@ -39,5 +39,7 @@ public partial class WaterMonitor
 
     public int PondId { get; set; }
 
+    public DateTime? Date { get; set; }
+
     public virtual Pond Pond { get; set; } = null!;
 }

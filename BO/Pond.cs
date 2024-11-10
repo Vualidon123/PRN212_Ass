@@ -29,6 +29,8 @@ public partial class Pond
 
     public int? UserId { get; set; }
 
+    public virtual ICollection<GrowthRecord> GrowthRecords { get; set; } = new List<GrowthRecord>();
+
     public virtual ICollection<KoiFish> KoiFishes { get; set; } = new List<KoiFish>();
 
     public virtual User? User { get; set; }

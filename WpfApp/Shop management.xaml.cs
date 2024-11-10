@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace WpfApp
+{
+    /// <summary>
+    /// Interaction logic for Shop_management.xaml
+    /// </summary>
+    public partial class Shop_management : Window
+    {
+        public Shop_management()
+        {
+            InitializeComponent();
+        }
+
+        private void ProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProductWindow productWindow = new ProductWindow();
+            productWindow.Show();
+            this.Close();
+        }
+
+        private void CategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            CategoryWindow categoryWindow = new CategoryWindow();
+            categoryWindow.Show();
+            this.Close();
+        }
+
+        private void OrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+}

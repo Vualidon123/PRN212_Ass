@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace BO;
 
@@ -18,15 +17,11 @@ public partial class TestyContext : DbContext
 
     public virtual DbSet<BlogModel> BlogModels { get; set; }
 
-    public virtual DbSet<BlogModelBlogImage> BlogModelBlogImages { get; set; }
-
     public virtual DbSet<Cart> Carts { get; set; }
 
     public virtual DbSet<CartItem> CartItems { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
-
-    public virtual DbSet<ComExampleDemoServiceShop> ComExampleDemoServiceShops { get; set; }
 
     public virtual DbSet<ForgotPassword> ForgotPasswords { get; set; }
 
@@ -36,11 +31,17 @@ public partial class TestyContext : DbContext
 
     public virtual DbSet<NewsModel> NewsModels { get; set; }
 
-    public virtual DbSet<NewsModelNewsImage> NewsModelNewsImages { get; set; }
+    public virtual DbSet<Order> Orders { get; set; }
+
+    public virtual DbSet<OrderItem> OrderItems { get; set; }
+
+    public virtual DbSet<OrderTracking> OrderTrackings { get; set; }
 
     public virtual DbSet<Pond> Ponds { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
+
+    public virtual DbSet<Revenue> Revenues { get; set; }
 
     public virtual DbSet<Review> Reviews { get; set; }
 
@@ -52,31 +53,21 @@ public partial class TestyContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer(GetConnectionString());
-    private string GetConnectionString()
-    {
-        IConfiguration config = new ConfigurationBuilder()
-             .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json", true, true)
-                    .Build();
-        var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-DOHV4PE;uid=sa;pwd=12345;database=testy;TrustServerCertificate=True");
 
-        return strConn;
-    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<BlogModel>(entity =>
         {
-            entity.HasKey(e => e.BlogId).HasName("PK__blog_mod__2975AA285840B6A3");
+            entity.HasKey(e => e.BlogId).HasName("PK__blog_mod__2975AA28447B850B");
 
             entity.ToTable("blog_model");
 
             entity.Property(e => e.BlogId).HasColumnName("blog_id");
             entity.Property(e => e.Author).HasColumnName("author");
-            entity.Property(e => e.BlogContent)
-                .HasColumnType("text")
-                .HasColumnName("blog_content");
+            entity.Property(e => e.BlogContent).HasColumnName("blog_content");
             entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.Image).HasColumnName("image");
             entity.Property(e => e.Title)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -87,24 +78,9 @@ public partial class TestyContext : DbContext
                 .HasConstraintName("FKrb9k5qpj8pn2vcfnvln0envyh");
         });
 
-        modelBuilder.Entity<BlogModelBlogImage>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("blog_model_blog_image");
-
-            entity.Property(e => e.BlogImage).HasColumnName("blog_image");
-            entity.Property(e => e.BlogModelBlogId).HasColumnName("blog_model_blog_id");
-
-            entity.HasOne(d => d.BlogModelBlog).WithMany()
-                .HasForeignKey(d => d.BlogModelBlogId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FKdtuevm0k5jy3cua5w4pap9xve");
-        });
-
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__cart__3213E83FC7D8E59D");
+            entity.HasKey(e => e.Id).HasName("PK__cart__3213E83FD04EDC94");
 
             entity.ToTable("cart");
 
@@ -121,7 +97,7 @@ public partial class TestyContext : DbContext
 
         modelBuilder.Entity<CartItem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__cart_ite__3213E83FB473972A");
+            entity.HasKey(e => e.Id).HasName("PK__cart_ite__3213E83F60936EE0");
 
             entity.ToTable("cart_item");
 
@@ -142,7 +118,7 @@ public partial class TestyContext : DbContext
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__category__D54EE9B46E5801F3");
+            entity.HasKey(e => e.CategoryId).HasName("PK__category__D54EE9B4297EBFE2");
 
             entity.ToTable("category");
 
@@ -153,35 +129,9 @@ public partial class TestyContext : DbContext
                 .HasColumnName("category_name");
         });
 
-        modelBuilder.Entity<ComExampleDemoServiceShop>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__com/exam__3213E83FC14F010E");
-
-            entity.ToTable("com/example/demo/service/shop");
-
-            entity.HasIndex(e => e.UserId, "UKhq66u76xr5bpa696gl5d1suf3")
-                .IsUnique()
-                .HasFilter("([user_id] IS NOT NULL)");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Description)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("description");
-            entity.Property(e => e.ShopName)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("shop_name");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.User).WithOne(p => p.ComExampleDemoServiceShop)
-                .HasForeignKey<ComExampleDemoServiceShop>(d => d.UserId)
-                .HasConstraintName("FKlebt55oh16nsn8khwwr9nxqpb");
-        });
-
         modelBuilder.Entity<ForgotPassword>(entity =>
         {
-            entity.HasKey(e => e.Fpid).HasName("PK__forgot_p__330FD28F0953D5AF");
+            entity.HasKey(e => e.Fpid).HasName("PK__forgot_p__330FD28F4A4C05CF");
 
             entity.ToTable("forgot_password");
 
@@ -204,7 +154,7 @@ public partial class TestyContext : DbContext
 
         modelBuilder.Entity<GrowthRecord>(entity =>
         {
-            entity.HasKey(e => new { e.Date, e.KoiFishKoiFishId }).HasName("PK__growth_r__FA2EB53BAB73C5CD");
+            entity.HasKey(e => new { e.Date, e.KoiFishKoiFishId }).HasName("PK__growth_r__FA2EB53B16C2E940");
 
             entity.ToTable("growth_record");
 
@@ -216,6 +166,7 @@ public partial class TestyContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("physique");
+            entity.Property(e => e.PondId).HasColumnName("pond_id");
             entity.Property(e => e.UpdateAt)
                 .HasPrecision(6)
                 .HasColumnName("update_at");
@@ -226,11 +177,15 @@ public partial class TestyContext : DbContext
                 .HasForeignKey(d => d.KoiFishKoiFishId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FKrlpiaiopo5m2hpq3dd1g268km");
+
+            entity.HasOne(d => d.Pond).WithMany(p => p.GrowthRecords)
+                .HasForeignKey(d => d.PondId)
+                .HasConstraintName("FK63urc0uif24lfa66vp6ys3vn");
         });
 
         modelBuilder.Entity<KoiFish>(entity =>
         {
-            entity.HasKey(e => e.KoiFishId).HasName("PK__koi_fish__55AA1AFCEA1EF7AE");
+            entity.HasKey(e => e.KoiFishId).HasName("PK__koi_fish__55AA1AFCE23EEC99");
 
             entity.ToTable("koi_fish");
 
@@ -281,7 +236,7 @@ public partial class TestyContext : DbContext
 
         modelBuilder.Entity<NewsModel>(entity =>
         {
-            entity.HasKey(e => e.NewsId).HasName("PK__news_mod__4C27CCD82295A5AB");
+            entity.HasKey(e => e.NewsId).HasName("PK__news_mod__4C27CCD8619BCB82");
 
             entity.ToTable("news_model");
 
@@ -292,33 +247,87 @@ public partial class TestyContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("headline");
-            entity.Property(e => e.NewsContent)
-                .HasColumnType("text")
-                .HasColumnName("news_content");
+            entity.Property(e => e.Image).HasColumnName("image");
+            entity.Property(e => e.NewsContent).HasColumnName("news_content");
 
             entity.HasOne(d => d.AuthorNavigation).WithMany(p => p.NewsModels)
                 .HasForeignKey(d => d.Author)
                 .HasConstraintName("FKqjwmsky8fmlvua9ub9wr1h0x3");
         });
 
-        modelBuilder.Entity<NewsModelNewsImage>(entity =>
+        modelBuilder.Entity<Order>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("news_model_news_image");
+            entity.HasKey(e => e.OrderId).HasName("PK__orders__465962297FEF1C6E");
 
-            entity.Property(e => e.NewsImage).HasColumnName("news_image");
-            entity.Property(e => e.NewsModelNewsId).HasColumnName("news_model_news_id");
+            entity.ToTable("orders");
 
-            entity.HasOne(d => d.NewsModelNews).WithMany()
-                .HasForeignKey(d => d.NewsModelNewsId)
+            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.OrderDate)
+                .HasPrecision(6)
+                .HasColumnName("order_date");
+            entity.Property(e => e.OrderStatus)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("order_status");
+            entity.Property(e => e.TotalAmount)
+                .HasColumnType("numeric(38, 2)")
+                .HasColumnName("total_amount");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FKmpv18h7ceby9tc5brgswfjvkt");
+                .HasConstraintName("FK32ql8ubntj5uh44ph9659tiih");
+        });
+
+        modelBuilder.Entity<OrderItem>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__order_it__3213E83F91D59F81");
+
+            entity.ToTable("order_items");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.Price)
+                .HasColumnType("numeric(38, 2)")
+                .HasColumnName("price");
+            entity.Property(e => e.ProductId).HasColumnName("product_id");
+            entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
+                .HasForeignKey(d => d.OrderId)
+                .HasConstraintName("FKbioxgbv59vetrxe0ejfubep1w");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.OrderItems)
+                .HasForeignKey(d => d.ProductId)
+                .HasConstraintName("FKlf6f9q956mt144wiv6p1yko16");
+        });
+
+        modelBuilder.Entity<OrderTracking>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__order_tr__3213E83FF834CEBC");
+
+            entity.ToTable("order_tracking");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.OrderStatus)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("order_status");
+            entity.Property(e => e.Timestamp)
+                .HasPrecision(6)
+                .HasColumnName("timestamp");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderTrackings)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKeu0lumcx8bcx6lk035xiklty0");
         });
 
         modelBuilder.Entity<Pond>(entity =>
         {
-            entity.HasKey(e => e.PondId).HasName("PK__pond__890F243F3C5FB031");
+            entity.HasKey(e => e.PondId).HasName("PK__pond__890F243F48BC8BE6");
 
             entity.ToTable("pond");
 
@@ -350,17 +359,23 @@ public partial class TestyContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__product__3213E83F076079DF");
+            entity.HasKey(e => e.Id).HasName("PK__product__3213E83F2723814E");
 
             entity.ToTable("product");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.CategoryId).HasColumnName("category_id");
+            entity.Property(e => e.CreatedAt)
+                .HasPrecision(6)
+                .HasColumnName("created_at");
             entity.Property(e => e.Description)
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("description");
+            entity.Property(e => e.ExpiresAt)
+                .HasPrecision(6)
+                .HasColumnName("expires_at");
             entity.Property(e => e.Price)
                 .HasColumnType("numeric(38, 2)")
                 .HasColumnName("price");
@@ -370,7 +385,6 @@ public partial class TestyContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("product_name");
             entity.Property(e => e.ProductRating).HasColumnName("product_rating");
-            entity.Property(e => e.StockQuantity).HasColumnName("stock_quantity");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
@@ -378,9 +392,27 @@ public partial class TestyContext : DbContext
                 .HasConstraintName("FK1mtsbur82frn64de7balymq9s");
         });
 
+        modelBuilder.Entity<Revenue>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__revenue__3213E83F0216F49F");
+
+            entity.ToTable("revenue");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Amount)
+                .HasColumnType("numeric(38, 2)")
+                .HasColumnName("amount");
+            entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Revenues)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FKsvv589ciyfpf7yncrmhuftu3v");
+        });
+
         modelBuilder.Entity<Review>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__review__3213E83FA4E828D0");
+            entity.HasKey(e => e.Id).HasName("PK__review__3213E83FB290CDF2");
 
             entity.ToTable("review");
 
@@ -406,7 +438,7 @@ public partial class TestyContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__roles__3213E83F14E566F9");
+            entity.HasKey(e => e.Id).HasName("PK__roles__3213E83F2053BE02");
 
             entity.ToTable("roles");
 
@@ -423,11 +455,15 @@ public partial class TestyContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__users__3213E83FCBC31667");
+            entity.HasKey(e => e.Id).HasName("PK__users__3213E83FDB970471");
 
             entity.ToTable("users");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Address)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("address");
             entity.Property(e => e.Email)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -440,6 +476,10 @@ public partial class TestyContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("password");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("phone");
             entity.Property(e => e.RoleId).HasColumnName("role_id");
 
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
@@ -449,7 +489,7 @@ public partial class TestyContext : DbContext
 
         modelBuilder.Entity<WaterMonitor>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__water_mo__3213E83F4C5CF967");
+            entity.HasKey(e => e.Id).HasName("PK__water_mo__3213E83FCD2243C2");
 
             entity.ToTable("water_monitor");
 
@@ -458,6 +498,9 @@ public partial class TestyContext : DbContext
             entity.Property(e => e.AmountFed).HasColumnName("amount_fed");
             entity.Property(e => e.CarbonHardnesskh).HasColumnName("carbon_hardnesskh");
             entity.Property(e => e.Co2).HasColumnName("co2");
+            entity.Property(e => e.Date)
+                .HasPrecision(6)
+                .HasColumnName("date");
             entity.Property(e => e.DateTime)
                 .HasPrecision(6)
                 .HasColumnName("date_time");

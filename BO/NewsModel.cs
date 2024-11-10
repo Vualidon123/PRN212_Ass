@@ -13,6 +13,8 @@ public partial class NewsModel
 
     public string? NewsContent { get; set; }
 
+    public byte[]? Image { get; set; }
+
     public int? Author { get; set; }
 
     public virtual User? AuthorNavigation { get; set; }

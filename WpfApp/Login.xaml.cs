@@ -1,5 +1,6 @@
 ﻿
 using System.Windows;
+using BO;
 using Service;
 
 namespace WpfApp
@@ -18,12 +19,13 @@ namespace WpfApp
         {
             var email = EmailTextBox.Text;
             var password = PasswordBox.Password;
-            
+           
             var user = _userService.Login(email, password);
             if (user != null)
             {
                 if (user.RoleId == 1)
                 {
+                    GLOBAL.UserId = user.Id;
                     Menu menu = new Menu();
                     menu.Show();
                 }

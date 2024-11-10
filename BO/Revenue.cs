@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace BO;
 
-public partial class ComExampleDemoServiceShop
+public partial class Revenue
 {
     public int Id { get; set; }
 
-    public string? Description { get; set; }
+    public decimal? Amount { get; set; }
 
-    public string? ShopName { get; set; }
+    public DateOnly? Date { get; set; }
 
     public int? UserId { get; set; }
 
