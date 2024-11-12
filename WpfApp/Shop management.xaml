@@ -89,13 +89,7 @@
                 </Button>
 
                 <!-- Orders Management Button -->
-                <Button x:Name="OrdersButton" 
-                        Style="{StaticResource NavButton}" 
-                        Click="OrdersButton_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Orders Management"/>
-                    </StackPanel>
-                </Button>
+                
             </StackPanel>
         </Grid>
 

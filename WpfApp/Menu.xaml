@@ -84,6 +84,18 @@
                         <TextBlock Text="Pond Management"/>
                     </StackPanel>
                 </Button>
+                 <Button x:Name="ProductButton" 
+         Style="{StaticResource NavButton}" 
+         Click="ShopButton_Click">
+     <StackPanel Orientation="Horizontal">
+         <TextBlock Text="Shop"/>
+     </StackPanel>
+                     
+ </Button>
+                <Button x:Name="btnShopManagement" Content="Go to Shop Management" Click="Button_Click" Visibility="Collapsed"/>
+
+
+
             </StackPanel>
 
 

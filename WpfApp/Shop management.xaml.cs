@@ -38,9 +38,6 @@ namespace WpfApp
             this.Close();
         }
 
-        private void OrdersButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

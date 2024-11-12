@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Product Management" Height="500" Width="900">
+        Title="Product Management" Height="944" Width="1414">
     <Border Background="White" CornerRadius="10" Padding="15" BorderBrush="#E0E0E0" BorderThickness="1">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -83,7 +83,7 @@
                 </StackPanel>
 
                 <!-- Action Buttons -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0">
                     <Button Content="Create" Width="90" Margin="5" Click="btn_Create" />
                     <Button Content="Update" Width="90" Margin="5" Click="btn_Update" />
                     <Button Content="Delete" Width="90" Margin="5" Click="btn_Delete" />
