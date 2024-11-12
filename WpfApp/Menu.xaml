@@ -92,7 +92,7 @@
      </StackPanel>
                      
  </Button>
-                <Button x:Name="btnShopManagement" Content="Go to Shop Management" Click="Button_Click" Visibility="Collapsed"/>
+                <Button x:Name="btnShopManagement" Content="Go to Shop Management" Click="Button_Click"/>
 
 
 

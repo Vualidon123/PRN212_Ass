@@ -17,7 +17,7 @@ namespace WpfApp
     /// <summary>
     /// Interaction logic for Shop_management.xaml
     /// </summary>
-    public partial class Shop_management : Window
+    public partial class Shop_management : Page
     {
         public Shop_management()
         {
@@ -26,18 +26,15 @@ namespace WpfApp
 
         private void ProductButton_Click(object sender, RoutedEventArgs e)
         {
-            ProductWindow productWindow = new ProductWindow();
-            productWindow.Show();
-            this.Close();
+            MainFrame.Navigate(new ProductWindow());
         }
 
         private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            CategoryWindow categoryWindow = new CategoryWindow();
-            categoryWindow.Show();
-            this.Close();
+            MainFrame.Navigate(new CategoryWindow());
+
         }
 
-        
+
     }
 }

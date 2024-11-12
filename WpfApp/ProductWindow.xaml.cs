@@ -20,7 +20,7 @@ namespace WpfApp
     /// <summary>
     /// Interaction logic for ProductWindow.xaml
     /// </summary>
-    public partial class ProductWindow : Window
+    public partial class ProductWindow : Page
     {
         private readonly IProductRepo productRepo;
         public ProductWindow()

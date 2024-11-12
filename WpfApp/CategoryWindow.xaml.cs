@@ -20,7 +20,7 @@ namespace WpfApp
     /// <summary>
     /// Interaction logic for CategoryWindow.xaml
     /// </summary>
-    public partial class CategoryWindow : Window
+    public partial class CategoryWindow : Page
     {
         private readonly ICategoryRepo categoryRepo;
         public CategoryWindow()
@@ -94,7 +94,8 @@ namespace WpfApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Window.GetWindow(this)?.Close();
+
         }
     }
 }

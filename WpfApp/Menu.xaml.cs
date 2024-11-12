@@ -31,16 +31,13 @@ namespace WpfApp
 
         private void ShopButton_Click(object sender, RoutedEventArgs e)
         {
-            ShopUI shopUI = new ShopUI();   
-            shopUI.Show();
-            this.Close();
+          MainFrame.Navigate(new ShopUI());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Shop_management shop_Management = new Shop_management();
-            shop_Management.Show();
-            this.Close();
+            MainFrame.Navigate(new Shop_management());
+
         }
     }
 }

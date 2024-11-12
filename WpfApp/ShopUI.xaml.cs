@@ -21,7 +21,7 @@ namespace WpfApp
     /// <summary>
     /// Interaction logic for ShopUI.xaml
     /// </summary>
-    public partial class ShopUI : Window
+    public partial class ShopUI : Page
     {
         private readonly IProductRepo productRepo;
         private readonly ICartRepo cartRepo;
