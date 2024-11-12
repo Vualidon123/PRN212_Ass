@@ -45,7 +45,6 @@ namespace WpfApp
             }
             else
             {
-                // Optionally set a placeholder image or hide the image control
                 PondImage.Visibility = Visibility.Collapsed;
             }
         }
@@ -66,7 +65,6 @@ namespace WpfApp
                 _pondService.UpdatePond(_pond);
 
                 MessageBox.Show("Pond updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
             }
             catch (Exception ex)
             {
@@ -77,6 +75,12 @@ namespace WpfApp
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new PondPage());
+        }
+
+        private void ViewWaterMonitor_Click(object sender, RoutedEventArgs e)
+        {
+            var waterMonitorPage = new WaterMonitorPage(_pond.PondId);
+            NavigationService?.Navigate(waterMonitorPage);
         }
     }
 }

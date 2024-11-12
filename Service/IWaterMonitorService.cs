@@ -9,7 +9,7 @@ namespace Service
 {
     public interface IWaterMonitorService
     {
-        public List<WaterMonitor> GetWaterMonitors();
+        public List<WaterMonitor> GetWaterMonitors(int pondid);
 
         public WaterMonitor GetWaterMonitorById(int id);
 

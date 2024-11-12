@@ -9,14 +9,16 @@ namespace DataAccessLayer
 {
     public class WaterMonitorDAO
     {
-        public static List<WaterMonitor> GetWaterMonitors()
+
+        public static List<WaterMonitor> GetWaterMonitors(int pondId)
         {
             var list = new List<WaterMonitor>();
             try
             {
                 using var context = new TestyContext();
-                list = context.WaterMonitors.ToList();
-
+                list = context.WaterMonitors
+                    .Where(wm => wm.PondId == pondId)
+                    .ToList();
             }
             catch (Exception ex)
             {
@@ -24,6 +26,7 @@ namespace DataAccessLayer
             }
             return list;
         }
+        
         public static WaterMonitor GetWaterMonitorById(int id)
         {
 

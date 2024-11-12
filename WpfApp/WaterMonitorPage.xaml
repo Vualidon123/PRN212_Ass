@@ -1,0 +1,111 @@
+﻿<Page x:Class="WpfApp.WaterMonitorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1200"
+      Title="WaterMonitorPage">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left column for input fields -->
+        <StackPanel Grid.Column="0" Margin="5,5,34,5">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Water Monitor ID:" Width="140"/>
+                <TextBox Name="WaterMonitorIdTextBox" Width="140" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="CO2:" Width="140"/>
+                <TextBox Name="Co2TextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Ammonium:" Width="140"/>
+                <TextBox Name="AmmoniumTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Carbonate Hardness (kH):" Width="140"/>
+                <TextBox Name="CarbonHardnessTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="General Hardness (gH):" Width="140"/>
+                <TextBox Name="HardnessTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Nitrate:" Width="140"/>
+                <TextBox Name="NitrateTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Nitrite:" Width="140"/>
+                <TextBox Name="NitriteTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Outdoor Temperature:" Width="140"/>
+                <TextBox Name="OutdoorTemperatureTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Oxygen:" Width="140"/>
+                <TextBox Name="OxygenTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="pH:" Width="140"/>
+                <TextBox Name="PhTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Phosphate:" Width="140"/>
+                <TextBox Name="PhosphateTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Salt:" Width="140"/>
+                <TextBox Name="SaltTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Temperature:" Width="140"/>
+                <TextBox Name="TemperatureTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Total Chlorine:" Width="140"/>
+                <TextBox Name="TotalChlorineTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Pond ID:" Width="140"/>
+                <TextBox Name="PondIdTextBox" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Content="Measurement Date:" Width="140"/>
+                <DatePicker Name="DateTextBox" Width="140"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10" Width="Auto">
+                <Button Content="Create" Click="CreateButton_Click" Width="80" Margin="2"/>
+                <Button Content="Update" Click="UpdateButton_Click" Width="80" Margin="2"/>
+                <Button Content="Delete" Click="DeleteButton_Click" Width="80" Margin="2"/>
+            </StackPanel>
+        </StackPanel>
+
+        <DataGrid Name="WaterMonitorDataGrid" AutoGenerateColumns="False" Margin="286,5,5,5" SelectionChanged="dg_selection" Grid.ColumnSpan="2" Width="Auto" CanUserAddRows="false">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="CO2" Binding="{Binding Co2}"/>
+                <DataGridTextColumn Header="Ammonium" Binding="{Binding Ammonium}"/>
+                <DataGridTextColumn Header="Carbonate Hardness (kH)" Binding="{Binding CarbonHardnesskh}"/>
+                <DataGridTextColumn Header="General Hardness (gH)" Binding="{Binding Hardnessgh}"/>
+                <DataGridTextColumn Header="Nitrate" Binding="{Binding Nitrate}"/>
+                <DataGridTextColumn Header="Nitrite" Binding="{Binding Nitrite}"/>
+                <DataGridTextColumn Header="Outdoor Temperature" Binding="{Binding OutdoorTemperature}"/>
+                <DataGridTextColumn Header="Oxygen" Binding="{Binding Oxygen}"/>
+                <DataGridTextColumn Header="pH" Binding="{Binding Ph}"/>
+                <DataGridTextColumn Header="Phosphate" Binding="{Binding Phosphate}"/>
+                <DataGridTextColumn Header="Salt" Binding="{Binding Salt}"/>
+                <DataGridTextColumn Header="Temperature" Binding="{Binding Temperature}"/>
+                <DataGridTextColumn Header="Total Chlorine" Binding="{Binding TotalChlorine}"/>
+                <DataGridTextColumn Header="Pond ID" Binding="{Binding PondId}"/>
+                <DataGridTextColumn Header="Measurement Date" Binding="{Binding Date, StringFormat='{}{0:MM/dd/yyyy}'}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

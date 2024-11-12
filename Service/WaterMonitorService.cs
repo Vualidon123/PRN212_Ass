@@ -31,9 +31,9 @@ namespace Service
            return repo.GetWaterMonitorById(id);
         }
 
-        public List<WaterMonitor> GetWaterMonitors()
+        public List<WaterMonitor> GetWaterMonitors(int pondid)
         {
-            return repo.GetWaterMonitors();
+            return repo.GetWaterMonitors(pondid);
         }
 
         public void UpdateWaterMonitor(WaterMonitor water)

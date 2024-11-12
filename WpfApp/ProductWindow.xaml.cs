@@ -127,11 +127,6 @@ namespace WpfApp
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void BrowseImage_Click(object sender, RoutedEventArgs e)
         {
 

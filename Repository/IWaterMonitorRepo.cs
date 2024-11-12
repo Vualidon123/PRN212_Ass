@@ -9,7 +9,7 @@ namespace Repository
 {
     public interface IWaterMonitorRepo
     {
-        public  List<WaterMonitor> GetWaterMonitors();
+        public  List<WaterMonitor> GetWaterMonitors(int pondid);
 
         public  WaterMonitor GetWaterMonitorById(int id);
 

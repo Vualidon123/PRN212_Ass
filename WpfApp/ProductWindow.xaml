@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
         Title="Product Management" Height="944" Width="1414">
     <Border Background="White" CornerRadius="10" Padding="15" BorderBrush="#E0E0E0" BorderThickness="1">
         <Grid>
@@ -87,7 +86,6 @@
                     <Button Content="Create" Width="90" Margin="5" Click="btn_Create" />
                     <Button Content="Update" Width="90" Margin="5" Click="btn_Update" />
                     <Button Content="Delete" Width="90" Margin="5" Click="btn_Delete" />
-                    <Button Content="Close" Width="90" Margin="5" Click="Button_Click" />
                 </StackPanel>
             </StackPanel>
         </Grid>

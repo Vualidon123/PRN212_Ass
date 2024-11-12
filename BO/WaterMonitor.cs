@@ -15,8 +15,6 @@ public partial class WaterMonitor
 
     public float CarbonHardnesskh { get; set; }
 
-    public DateTime? DateTime { get; set; }
-
     public float Hardnessgh { get; set; }
 
     public float Nitrate { get; set; }

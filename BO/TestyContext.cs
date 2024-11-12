@@ -514,9 +514,6 @@ public partial class TestyContext : DbContext
             entity.Property(e => e.Date)
                 .HasPrecision(6)
                 .HasColumnName("date");
-            entity.Property(e => e.DateTime)
-                .HasPrecision(6)
-                .HasColumnName("date_time");
             entity.Property(e => e.Hardnessgh).HasColumnName("hardnessgh");
             entity.Property(e => e.Nitrate).HasColumnName("nitrate");
             entity.Property(e => e.Nitrite).HasColumnName("nitrite");

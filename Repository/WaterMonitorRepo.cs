@@ -19,7 +19,7 @@ namespace Repository
         public WaterMonitor GetWaterMonitorById(int id) => WaterMonitorDAO.GetWaterMonitorById(id);
 
 
-        public List<WaterMonitor> GetWaterMonitors() => WaterMonitorDAO.GetWaterMonitors();
+        public List<WaterMonitor> GetWaterMonitors(int pondid) => WaterMonitorDAO.GetWaterMonitors(pondid);
 
 
         public void UpdateWaterMonitor(WaterMonitor water) => WaterMonitorDAO.UpdateWaterMonitor(water);
