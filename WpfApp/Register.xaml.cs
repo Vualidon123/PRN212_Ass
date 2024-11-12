@@ -43,7 +43,7 @@ namespace WpfApp
             }
         }
 
-        private void NameTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Login login = new Login();
             login.Show();
