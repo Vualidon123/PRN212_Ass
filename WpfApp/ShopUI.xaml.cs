@@ -71,20 +71,14 @@ namespace WpfApp
                     Date = DateTime.Now
                 };
 
-                cartItems.Add(cartItem);  // Add CartItem to ObservableCollection
-                UpdateTotal();
+                cartItems.Add(cartItem);
+                UpdateTotal(); // Update the total after adding item
             }
         }
 
         private void UpdateTotal()
         {
-            decimal total = 0;
-
-            foreach (CartItem cartItem in cartItems)  // Iterate through CartItem objects
-            {
-                total += cartItem.Product.Price.GetValueOrDefault() * cartItem.Quantity;
-            }
-
+            decimal total = cartItems.Sum(item => item.Product.Price.GetValueOrDefault() * item.Quantity);
             txtTotalPrice.Text = total.ToString("C");
         }
 
@@ -96,34 +90,23 @@ namespace WpfApp
                 return;
             }
 
-            // Assuming you will have a backend or service to handle the checkout process here
-            MessageBox.Show("Proceeding to checkout...");
+            decimal total = cartItems.Sum(item => item.Product.Price.GetValueOrDefault() * item.Quantity);
+            MessageBox.Show($"Proceeding to checkout...\nTotal Amount: {total:C}");
 
-            // Clear the cart items after checkout
             cartItems.Clear();
-
-            // Update the total price display
-            txtTotalPrice.Text = "$0.00";
+            UpdateTotal(); // Update the total after clearing cart
         }
-
         private void cartList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Ensure that there is a selected item
-            if (cartList.SelectedItem != null)
+            if (cartList.SelectedItem is CartItem selectedItem)
             {
-                // Cast the selected item to the CartItem class
-                var selectedItem = (CartItem)cartList.SelectedItem;
-
-                // Display the product details in the text boxes
-                txtProductName.Text = selectedItem.Product.ProductName;  // Corrected the property name
-                txtPrice.Text = selectedItem.Price.ToString("C"); // Format as currency
-                txtDescription.Text = selectedItem.Product.Description ?? "No description available"; // Assuming you have a description field in CartItem
-
-                btnAddtoCart.IsEnabled = true; // Enable the "Add to Cart" button
+                txtProductName.Text = selectedItem.Product.ProductName;
+                txtPrice.Text = selectedItem.Product.Price?.ToString("C") ?? "$0.00";
+                txtDescription.Text = selectedItem.Product.Description ?? "No description available";
+                btnAddtoCart.IsEnabled = true;
             }
             else
             {
-                // Clear textboxes and disable the "Add to Cart" button when no item is selected
                 txtProductName.Text = string.Empty;
                 txtPrice.Text = string.Empty;
                 txtDescription.Text = string.Empty;
@@ -131,17 +114,6 @@ namespace WpfApp
             }
         }
 
-        private void txtTotalPrice_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            decimal total = 0;
-
-            foreach (var item in cartItems)  // Replace 'CartItems' with your actual collection of cart items
-            {
-                total += item.Price * item.Quantity;  // Assuming Quantity is a property of CartItem
-            }
-
-            // Update the total price display
-            txtTotalPrice.Text = total.ToString("C");
-        }
+      
     }
     }
