@@ -112,7 +112,8 @@
                     </StackPanel>
 
                     <!-- Right column for DataGrid -->
-                    <DataGrid Name="KoiFishDataGrid" 
+                    <DataGrid CanUserAddRows="false" 
+                        Name="KoiFishDataGrid" 
                             AutoGenerateColumns="False" 
                             Margin="292,10,0,0" 
                             SelectionChanged="dg_selection"

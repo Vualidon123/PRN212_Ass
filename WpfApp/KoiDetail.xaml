@@ -87,10 +87,6 @@
                             <TextBox Name="PondIdTextBox" Width="120"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="3">
-                            <Label Content="User ID:" Width="90"/>
-                            <TextBox Name="UserIdTextBox" Width="120"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="3">
                             <Label Content="In Pond Since:" Width="90"/>
                             <DatePicker Name="InPondSinceTextBox" Width="120"/>
                         </StackPanel>

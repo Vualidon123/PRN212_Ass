@@ -104,7 +104,7 @@ namespace WpfApp
                         koiFish.Physique = PhysiqueTextBox.Text;
                         koiFish.Sex = SexTextBox.Text;
                         koiFish.PondId = string.IsNullOrWhiteSpace(PondIdTextBox.Text) ? null : int.Parse(PondIdTextBox.Text);
-                        koiFish.UserId = string.IsNullOrWhiteSpace(UserIdTextBox.Text) ? null : int.Parse(UserIdTextBox.Text);
+                       
                         koiFish.InPondSince = DateOnly.TryParse(InPondSinceTextBox.Text, out var date) ? date : null;
 
                         // Handle image update
@@ -147,7 +147,7 @@ namespace WpfApp
             PhysiqueTextBox.Text = koiFish.Physique;
             SexTextBox.Text = koiFish.Sex;
             PondIdTextBox.Text = koiFish.PondId?.ToString();
-            UserIdTextBox.Text = koiFish.UserId?.ToString();
+        
             InPondSinceTextBox.SelectedDate = koiFish.InPondSince?.ToDateTime(TimeOnly.MinValue);
         }
     }
