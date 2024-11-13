@@ -28,6 +28,7 @@ namespace WpfApp
         {
             InitializeComponent();
             DataContext = koiFish;
+            DisplayKoiInfo(koiFish);
             DisplayKoiImage(koiFish.Image);
             koiRepository = new KoiRepository();
             context = new TestyContext();
@@ -130,6 +131,24 @@ namespace WpfApp
             {
                 MessageBox.Show("Invalid KoiFish ID.");
             }
+        }
+
+        private void DisplayKoiInfo(KoiFish koiFish)
+        {
+            KoiFishIdTextBox.Text = koiFish.KoiFishId.ToString();
+            NameTextBox.Text = koiFish.Name;
+            BreederTextBox.Text = koiFish.Breeder;
+            AgeTextBox.Text = koiFish.Age?.ToString();
+            LengthTextBox.Text = koiFish.Length?.ToString();
+            WeightTextBox.Text = koiFish.Weight?.ToString();
+            PriceTextBox.Text = koiFish.Price?.ToString();
+            VarietyTextBox.Text = koiFish.Variety;
+            OriginTextBox.Text = koiFish.Origin;
+            PhysiqueTextBox.Text = koiFish.Physique;
+            SexTextBox.Text = koiFish.Sex;
+            PondIdTextBox.Text = koiFish.PondId?.ToString();
+            UserIdTextBox.Text = koiFish.UserId?.ToString();
+            InPondSinceTextBox.SelectedDate = koiFish.InPondSince?.ToDateTime(TimeOnly.MinValue);
         }
     }
 }

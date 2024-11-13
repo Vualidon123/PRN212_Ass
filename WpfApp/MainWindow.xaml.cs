@@ -173,6 +173,7 @@ namespace WpfApp
                 UserIdTextBox.Text = selectedKoiFish.UserId?.ToString();
                 InPondSinceTextBox.Text = selectedKoiFish.InPondSince?.ToString("yyyy-MM-dd");
                 ImagePathTextBox.Text = selectedKoiFish.Image?.ToString();
+               
                 NavigationService?.Navigate(new KoiDetail(selectedKoiFish));
             }
             else

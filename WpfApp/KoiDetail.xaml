@@ -11,7 +11,6 @@
         <!-- Style for TextBoxes -->
         <Style TargetType="TextBox">
             <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="CaretBrush" Value="Black"/>
         </Style>
@@ -28,7 +27,7 @@
     </Page.Resources>
 
     <Grid>
-        <Image Source="C:\Users\PC MSI\Desktop\SWP391\PRN212_Ass\Koi.jpg" Stretch="Fill"/>
+      
         
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
