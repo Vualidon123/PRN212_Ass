@@ -31,7 +31,8 @@ namespace WpfApp
                 }
                 else if (user.RoleId == 2)
                 {
-                    
+                    Shop_management shop_Management = new Shop_management();
+                    shop_Management.Show();
                 }
                 this.Close();
             }

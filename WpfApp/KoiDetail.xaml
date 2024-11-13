@@ -10,20 +10,20 @@
     <Page.Resources>
         <!-- Style for TextBoxes -->
         <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="CaretBrush" Value="White"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="CaretBrush" Value="Black"/>
         </Style>
         
         <!-- Style for Labels -->
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
         
         <!-- Style for TextBlock -->
         <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
     </Page.Resources>
 

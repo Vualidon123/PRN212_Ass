@@ -17,7 +17,7 @@ namespace WpfApp
     /// <summary>
     /// Interaction logic for Shop_management.xaml
     /// </summary>
-    public partial class Shop_management : Page
+    public partial class Shop_management : Window
     {
         public Shop_management()
         {

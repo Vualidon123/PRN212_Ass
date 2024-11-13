@@ -9,28 +9,26 @@
     <Page.Resources>
         <!-- Style for TextBoxes -->
         <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="CaretBrush" Value="White"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="CaretBrush" Value="Black"/>
         </Style>
         
         <!-- Style for Labels -->
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
         
         <!-- Style for DatePicker -->
         <Style TargetType="DatePicker">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderBrush" Value="Black"/>
         </Style>
     </Page.Resources>
 
     <Grid>
-        <!-- Background Image -->
-        <Image Source="/Koi.jpg" Stretch="Fill"/>
 
         <!-- Content Grid -->
         <Grid Margin="10">
@@ -128,10 +126,10 @@
                             Background="Transparent"
                             RowBackground="Transparent"
                             AlternatingRowBackground="Transparent"
-                            BorderBrush="White"
+                            BorderBrush="Black"
                             GridLinesVisibility="All"
-                            HorizontalGridLinesBrush="White"
-                            VerticalGridLinesBrush="White">
+                            HorizontalGridLinesBrush="Black"
+                            VerticalGridLinesBrush="Black">
                         <DataGrid.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
                                              Color="#3FFFFFFF"/>
@@ -139,19 +137,19 @@
                                              Color="Transparent"/>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="BorderBrush" Value="White"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
                                 <Setter Property="BorderThickness" Value="0,0,1,1"/>
-                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Foreground" Value="Black"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter Property="Background" Value="#3FFFFFFF"/>
-                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Foreground" Value="Black"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
                             <Style TargetType="{x:Type DataGridRow}">
                                 <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Foreground" Value="Black"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background" Value="#3FFFFFFF"/>
@@ -160,8 +158,8 @@
                             </Style>
                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                 <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="Foreground" Value="White"/>
-                                <Setter Property="BorderBrush" Value="White"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
                                 <Setter Property="BorderThickness" Value="0,0,1,1"/>
                                 <Setter Property="Padding" Value="5"/>
                             </Style>
@@ -196,7 +194,6 @@
                             <DataGridTextColumn Header="Physique" Binding="{Binding Physique}" Width="50"/>
                             <DataGridTextColumn Header="Sex" Binding="{Binding Sex}" Width="50"/>
                             <DataGridTextColumn Header="Pond ID" Binding="{Binding PondId}" Width="30"/>
-                            <DataGridTextColumn Header="User ID" Binding="{Binding UserId}" Width="30"/>
                             <DataGridTextColumn Header="In Pond Since" Binding="{Binding InPondSince}" Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>

@@ -25,7 +25,6 @@
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Product ID" Binding="{Binding ProductID}" Width="100"/>
                     <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" Width="*"/>
                     <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" Width="80"/>
                     <DataGridTextColumn Header="Category ID" Binding="{Binding CategoryID}" Width="80"/>

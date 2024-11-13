@@ -11,11 +11,7 @@ namespace WpfApp
         {
             InitializeComponent();
 
-            // Show the button if role is 3
-            if (userRole == 3)
-            {
-                btnShopManagement.Visibility = Visibility.Visible;
-            }
+           
         }
         
         private void KoiFishButton_Click(object sender, RoutedEventArgs e)
